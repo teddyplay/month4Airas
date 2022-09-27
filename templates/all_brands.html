@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    {% for cars in car %}
+
+    <h2>Название: <a href="/all_models/{{ cars.id }}">{{ cars.name }}</a></h2>
+{% endfor %}
+
+
+{% endblock %}

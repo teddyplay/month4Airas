@@ -6,3 +6,5 @@ def all_models(request, id):
     return render(request, "all_models.html", {"show":show})
 
 
+
+

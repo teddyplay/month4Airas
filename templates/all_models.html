@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <div>
+    <p><img src="{{ show.image.url }}" alt="..."></p>
     <h2>Название: {{ show.name }}</h2>
     <p>Двигатель: {{ show.engine }}</p>
     <p>Мощьность: {{ show.hp }}</p>
     <p>Ньютон - метр: {{ show.nm }}</p>
+    <p>Серия : {{ show.series }}</p>
+
 
 </div>
 

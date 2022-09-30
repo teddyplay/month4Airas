@@ -7,4 +7,3 @@ def all_models(request, id):
 
 
 
-

@@ -1,15 +1,17 @@
-{% extends "base.html" %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Все модели</title>
+</head>
+<body>
 
-{% block content %}
+<div>
+        {% for cars in car %}
+    <h2>Название: <a href="{{ cars.id }}">{{ cars.name }}</a></h2>
+        {% endfor %}
+</div>
+</body>
+</html>
 
-
-    {% for cars in car %}
-
-    <h2>Название: <a href="/all_models/{{ cars.id }}">{{ cars.name }}</a></h2>
-{% endfor %}
-
-
-
-
-{% endblock %}
-
+{#    {% for cars in car %}#}
+{#    {% endfor %}#}

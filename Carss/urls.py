@@ -9,6 +9,9 @@ urlpatterns = (
     path('admin/', admin.site.urls),
     path('', include('brands.urls')),
     path('', include('models.urls')),
+    path('', include('users.urls')),
+
+
 
 ] + static(settings.STATIC_URL, document_url=settings.STATIC_URL)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

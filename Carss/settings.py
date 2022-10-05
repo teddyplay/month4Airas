@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'brands',
     'models',
+    'users',
+
 
 ]
 
@@ -102,6 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGIN_REDIRECT_URL = 'all_brands'
+LOGIN_URL = 'login'
 
 
 # Internationalization

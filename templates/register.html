@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Регистрация</button>
+            </div>
+        </form>
+            <small class="text-muted">
+                Уже есть аккаунт? <a class="ml-2" href="registration/login.html">Вход</a>
+            </small>
+{% if messages %}
+        	{% for message in messages %}
+          	<div class="alert alert-{{ message.tags }}">
+            	{{ message }}
+          	</div>
+        	{% endfor %}
+{% endif %}
+</body>
+</html>
+
+
+

@@ -10,35 +10,35 @@
 #         model = User
 #         fields = ['username', 'email', 'password1', 'password2']
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm
 from django.contrib.auth.models import User
 
 
 class RegistrationForm(UserCreationForm):
-    GENDER_TYPE = (
-        ("Male", "Male"),
-        ("Female", "Female"),
-        ("Other", "Other")
-    )
-    OCCUPATION_CHOICE = (
-        ("Student", "Student"),
-        ("Worker", "Worker"),
-        ("Jobless", "Jobless"),
-        ("Retired", "Retired")
-    )
-    FAV_CHOICE = (
-        ('DRAMA', 'DRAMA'),
-        ('FANTASY', 'FANTASY'),
-        ('EDU', 'EDU'),
-        ('ROMANTIC', 'ROMANTIC'),
-        ('HORROR', 'HORROR'),
-    )
-    gender = forms.ChoiceField(choices=GENDER_TYPE, required=True)
-    occupation = forms.ChoiceField(choices=OCCUPATION_CHOICE, required=True)
+    # GENDER_TYPE = (
+    #     ("Male", "Male"),
+    #     ("Female", "Female"),
+    #     ("Other", "Other")
+    # )
+    # OCCUPATION_CHOICE = (
+    #     ("Student", "Student"),
+    #     ("Worker", "Worker"),
+    #     ("Jobless", "Jobless"),
+    #     ("Retired", "Retired")
+    # )
+    # FAV_CHOICE = (
+    #     ('DRAMA', 'DRAMA'),
+    #     ('FANTASY', 'FANTASY'),
+    #     ('EDU', 'EDU'),
+    #     ('ROMANTIC', 'ROMANTIC'),
+    #     ('HORROR', 'HORROR'),
+    # )
+    # gender = forms.ChoiceField(choices=GENDER_TYPE, required=True)
+    # occupation = forms.ChoiceField(choices=OCCUPATION_CHOICE, required=True)
     email = forms.EmailField(required=True)
-    age = forms.DateField(required=True)
-    phone_number = forms.CharField(required=True)
-    favorite_genre = forms.ChoiceField(choices=FAV_CHOICE, required=False)
+    # age = forms.DateField(required=True)
+    # phone_number = forms.CharField(required=True)
+    # favorite_genre = forms.ChoiceField(choices=FAV_CHOICE, required=False)
 
     class Meta:
         model = User
@@ -49,11 +49,6 @@ class RegistrationForm(UserCreationForm):
             "password2",
             "first_name",
             "last_name",
-            "gender",
-            "occupation",
-            "age",
-            "phone_number",
-            "favorite_genre"
         ]
 
     def save(self, commit=True):
@@ -96,3 +91,10 @@ class LoginForm(AuthenticationForm):
             }
         )
     )
+#
+class MyPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for fieldname in ['old_password', 'new_password1', 'new_password2']:
+            self.fields[fieldname].widget.attrs = {'class':'form-control'}
